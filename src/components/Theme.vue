@@ -89,15 +89,15 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%; /* Hace que el botón sea circular */
-  overflow: hidden; /* Asegura que el contenido no sobresalga del círculo */
-  outline: none; /* Elimina el borde de enfoque predeterminado */
+  border-radius: 50%;
+  overflow: hidden;
+  outline: none;
   border: none;
   background-color: unset;
 }
 
 .theme-switcher:focus {
-  outline: none; /* Asegura que no se muestre el borde de enfoque */
+  outline: none;
 }
 
 i {

@@ -1,11 +1,14 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
+
 :root {
   color-scheme: light dark;
 }
+
 body {
   color: light-dark(#000000, #efefec);
   background-color: light-dark(#efedea, #000000);
 }
+
