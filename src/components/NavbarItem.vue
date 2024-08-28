@@ -1,46 +1,31 @@
 <template>
-  <div v-if="item.children" class="navbar-dropdown" ref="dropdownRef">
+  <div v-if="props.item.children" class="navbar-dropdown" ref="dropdownRef">
     <button class="navbar-item dropdown-trigger" @click="toggleDropdown">
-      {{ item.label }}
+      {{ props.item.label }}
       <span class="dropdown-arrow" :class="{ open: isDropdownOpen }">▼</span>
     </button>
     <Transition name="dropdown">
       <div v-show="isDropdownOpen" class="dropdown-menu">
-        <RouterLink
-          v-for="child in item.children"
-          :key="child.id"
-          :to="child.route"
-          class="dropdown-item"
-          @click="closeMenu"
-        >
+        <RouterLink v-for="child in props.item.children" :key="child.id" :to="child.route ?? '/'" class="dropdown-item"
+          @click="closeMenu">
           {{ child.label }}
         </RouterLink>
       </div>
     </Transition>
   </div>
-  <RouterLink
-    v-else
-    :to="item.route || ''"
-    class="navbar-item"
-    @click="closeMenu"
-    :class="{ active: isActive(item.route || '') }"
-  >
-    {{ item.label }}
+  <RouterLink v-else :to="props.item.route || ''" class="navbar-item" @click="closeMenu"
+    :class="{ active: isActive(props.item.route || '') }">
+    {{ props.item.label }}
   </RouterLink>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { RouterLink, useRoute } from "vue-router";
+import type { MenuItem } from '../ts/menuItems'; // Asegúrate de ajustar la ruta según la estructura de tu proyecto
 
-const route = useRoute();
 const props = defineProps<{
-  item: {
-    id: number;
-    label: string;
-    route?: string;
-    children?: { id: number; label: string; route: string }[];
-  };
+  item: MenuItem;
 }>();
 
 const emit = defineEmits<{
@@ -49,6 +34,7 @@ const emit = defineEmits<{
 
 const isDropdownOpen = ref(false);
 const dropdownRef = ref<HTMLElement | null>(null);
+const route = useRoute();
 
 const isActive = computed(() => (path: string) => path && route.path === path);
 
@@ -182,6 +168,7 @@ onUnmounted(() => {
 }
 
 @media (max-width: 768px) {
+
   .navbar-item,
   .dropdown-trigger {
     opacity: 0;
