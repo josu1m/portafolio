@@ -4,11 +4,7 @@
       <div class="navbar-container">
         <div class="navbar-brand">
           <RouterLink to="/" class="navbar-logo">ModernNav</RouterLink>
-          <button
-            class="navbar-toggle"
-            @click="toggleMenu"
-            :aria-expanded="isMenuOpen"
-          >
+          <button class="navbar-toggle" @click="toggleMenu" :aria-expanded="isMenuOpen">
             <span class="sr-only">Toggle navigation</span>
             <div class="hamburger-icon" :class="{ open: isMenuOpen }">
               <span></span>
@@ -18,17 +14,8 @@
           </button>
         </div>
         <Transition name="navbar-slide">
-          <div
-            v-show="isMenuOpen || !isMobile"
-            class="navbar-menu"
-            :class="{ open: isMenuOpen }"
-          >
-            <NavbarItem
-              v-for="item in menuItems"
-              :key="item.id"
-              :item="item"
-              @close-menu="closeMenu"
-            />
+          <div v-show="isMenuOpen || !isMobile" class="navbar-menu" :class="{ open: isMenuOpen }">
+            <NavbarItem v-for="item in menuItems" :key="item.id" :item="item" @close-menu="closeMenu" />
             <Theme class="navbar-item theme-item" />
           </div>
         </Transition>
@@ -102,19 +89,25 @@ onUnmounted(() => {
   color: light-dark(#000000, #efefec);
   transition: color 0.3s ease;
   background: linear-gradient(45deg, #3498db, #8e44ad);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 200%;
   animation: gradientShift 5s ease infinite;
+
+  background-clip: text;
+  /* Propiedad estándar */
+  color: transparent;
+
 }
 
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -177,7 +170,8 @@ onUnmounted(() => {
 .navbar-menu {
   display: flex;
   gap: 1rem;
-  align-items: center; /* Alinea verticalmente los elementos */
+  align-items: center;
+  /* Alinea verticalmente los elementos */
 }
 
 .navbar-slide-enter-active,
@@ -208,6 +202,7 @@ onUnmounted(() => {
   align-items: center;
   padding: 10px;
 }
+
 @media (max-width: 768px) {
   .navbar-container {
     flex-direction: column;
@@ -238,6 +233,7 @@ onUnmounted(() => {
   .navbar-menu.open {
     padding: 1rem;
   }
+
   .theme-item {
     width: 16%;
     padding: 20px;
