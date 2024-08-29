@@ -96,8 +96,8 @@ watch(() => props.isVisible, (newValue) => {
 }
 
 .modal-content {
-    background-color: #ffffff;
-    color: #333333;
+    color: light-dark(#000000, #efefec);
+    background-color: light-dark(#efedea, #464545e2);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -125,7 +125,6 @@ watch(() => props.isVisible, (newValue) => {
 }
 
 .modal-header {
-    background-color:  #f8f8f8;
     border-bottom: 1px solid #eaeaea;
     display: flex;
     justify-content: space-between;
@@ -137,21 +136,23 @@ watch(() => props.isVisible, (newValue) => {
     font-size: 1.8rem;
     font-weight: 700;
     margin: 0;
-    color:  #2c3e50;
+    color: light-dark(#000000, #efefec);
+    background-color: light-dark(#efedea, #464545e2);
 }
 
 .modal-main {
     overflow-y: auto;
     flex-grow: 1;
-    padding:0;
-    margin:5px;
+    padding: 0;
+    margin: 5px;
 }
 
 .modal-footer {
-    background-color: #f8f8f8;
+    background-color: light-dark(#efedea, #464545c1);
     border-top: 1px solid #eaeaea;
     display: flex;
-    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    justify-content: space-between;
+    /* Distribuye el espacio entre los elementos */
     padding: 6px;
     padding-right: 20px;
     padding-left: 20px;
@@ -164,20 +165,20 @@ watch(() => props.isVisible, (newValue) => {
     border: none;
     cursor: pointer;
     padding: 1px;
-    color:  #999;
+    color: #999;
     transition: all 0.3s ease;
     border-radius: 50%;
 }
 
 .close-button:hover {
-    color:  #333;
+    color: #333;
     background-color: rgba(0, 0, 0, 0.05);
     transform: rotate(90deg);
 }
 
 .modal-button {
-    background-color:  #3498db;
-    color:  #ffffff;
+    background-color: #3498db;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -189,7 +190,7 @@ watch(() => props.isVisible, (newValue) => {
 }
 
 .modal-button:hover {
-    background-color:  #2980b9;
+    background-color: #2980b9;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -217,14 +218,15 @@ watch(() => props.isVisible, (newValue) => {
 }
 
 @media (max-width: 768px) {
-  .modal-content {
-    width: 80%;
-  }
+    .modal-content {
+        width: 80%;
+    }
 }
+
 @media (max-width: 460px) {
-  .modal-content {
-    width: 90%;
-  }
+    .modal-content {
+        width: 90%;
+    }
 }
 </style>
 <!-- 
