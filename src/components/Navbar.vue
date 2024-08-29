@@ -89,12 +89,9 @@ onUnmounted(() => {
   color: light-dark(#000000, #efefec);
   transition: color 0.3s ease;
   background: linear-gradient(45deg, #3498db, #8e44ad);
-  -webkit-text-fill-color: transparent;
   background-size: 200% 200%;
   animation: gradientShift 5s ease infinite;
-
   background-clip: text;
-  /* Propiedad estándar */
   color: transparent;
 
 }
