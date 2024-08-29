@@ -19,7 +19,7 @@ import Navbar from "./Navbar.vue";
   grid-template-rows: auto 1fr auto;
 }
 main{
-  padding-top: 58px;
+  padding-top: 40px;
   margin: 6px;
 }
 </style>
